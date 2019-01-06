@@ -80,23 +80,57 @@ def gen_7():
     c = rnd.randint(mn,mx)    
     return  subst(ex,['a','b','c'],[a,b,c]),  str(eval(ex))
 
+def gen_8():
+    mn = 50
+    mx = 2000
+    ex = 'a * b'
+    a = rnd.randint(mn,mx)
+    b = rnd.randint(mn,mx)
+    time = 60000
+    return subst(ex,['a','b'],[a,b]), str(eval(ex)), time
+
+def gen_9():
+    mn = 900
+    mx = 20000
+    ex = 'a + b'
+    a = rnd.randint(mn,mx)
+    b = rnd.randint(mn,mx)
+    time = 30000
+    return subst(ex,['a','b'],[a,b]), str(eval(ex)), time
+
+def gen_10():
+    ex = 'a : b '
+    ex_1 = ex.replace(':','/')
+    a,b,res = getQuotient(mx = 400,min_a = 200,min_b = 50)
+    time = 80000
+    return subst(ex,['a','b'],[a,b]), str(int(eval(ex_1))), time
+
+def gen_11():
+    mn = 900
+    mx = 20000
+    ex = 'b - a'
+    a = rnd.randint(mn,mx - 1)
+    b = rnd.randint(a + 1,mx)
+    time = 40000
+    return subst(ex,['a','b'],[a,b]), str(eval(ex)), time
+
 def get_tasks(N):
     ex = []
     for k in range(N):
-        t = rnd.randint(0,7)
+        t = rnd.randint(0,11)
         f = 'gen_' + str(t) + '()'
         r = eval(f)
         ex.append(r)
     return ex
+
 
 def subst(ex,symb,var):
     for s,v in zip(symb,var):
         ex = ex.replace(s,str(v))
     return ex
 
-def getQuotient():
-    mx = 15
-    a = rnd.randint(2,mx)
-    b = rnd.randint(1,mx)
+def getQuotient(mx = 15,min_a = 2,min_b = 1):    
+    a = rnd.randint(min_a,mx)
+    b = rnd.randint(min_b,mx)
     c = a * b
     return c,b,a

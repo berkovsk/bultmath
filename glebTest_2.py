@@ -100,7 +100,12 @@ def startTest():
    e.focus()
    e.pack() 
    e.insert(0,Tsk.ex[0][0] + ' = ')
-   root.task = e.after(Setting.timeOut_ms, timeOut)
+   if len(Tsk.ex[0]) == 2:
+       root.task = e.after(Setting.timeOut_ms, timeOut)
+   elif len(Tsk.ex[0]) == 3:
+       root.task = e.after(Tsk.ex[Tsk.nCurr][2], timeOut)
+
+   
    
 def endTest():
      e.insert(0,'Основной тест закончен ')
@@ -156,7 +161,10 @@ def nextEx():
        endTest()
     else:
         e.insert(0,Tsk.ex[Tsk.nCurr][0] + ' = ') 
-        root.task = e.after(Setting.timeOut_ms, timeOut)
+        if len(Tsk.ex[Tsk.nCurr]) == 2:
+           root.task = e.after(Setting.timeOut_ms, timeOut)
+        elif len(Tsk.ex[Tsk.nCurr]) == 3:
+           root.task = e.after(Tsk.ex[Tsk.nCurr][2], timeOut)
         
 def nextEx_corr():
     e.focus()
