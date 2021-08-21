@@ -1,4 +1,6 @@
-import msvcrt as ms
+import sys
+if sys.platform != 'linux':
+    import msvcrt as ms
 import time
 import random as rnd
 import task_generator as gen
@@ -190,7 +192,7 @@ l.pack()
 cnfg.greetingsLblCnfg(l)
 img = []
 for k in range(1,7):
-   img.append(PhotoImage(file='C:\Documents\PythonTrain\Dog_'+str(k)+'.gif'))
+   img.append(PhotoImage(file='/home/bna/GlebTestPy/bultik/Dog_'+str(k)+'.gif'))
 l_img['image'] = img[1]
 l_img.pack()
 
