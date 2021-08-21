@@ -11,8 +11,8 @@ from tkinter import *
 
   
 class Setting:
-    timeOut_ms = 15000
-    numEx = 30
+    timeOut_ms = 20000
+    numEx = 20
     def finalImg(perc):
         if perc <= 25:
             return 'Очень плохо, включи мозги!',5
@@ -128,7 +128,7 @@ def endTest():
          l_img['image'] = img[finImg]
          l_img.pack()
      else:
-         msg = ' Tecт пройден без ошибок!\nТы СУПЕРГЕРОЙ!!'
+         msg = f' Tecт пройден без ошибок!\n Решено {Setting.numEx} примеров! \nТы СУПЕРГЕРОЙ!!'
          l['text'] = msg
          b['state'] = NORMAL
          b1['state'] = NORMAL
